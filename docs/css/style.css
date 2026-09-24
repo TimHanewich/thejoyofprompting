@@ -216,6 +216,53 @@ h3
 }
 
 /* ------------------------------------------------------------
+   Use case flow
+   ------------------------------------------------------------ */
+
+.flow
+{
+    counter-reset: flow;
+    list-style: none;
+    padding: 0;
+    margin: var(--space-medium) 0;
+}
+
+.flow li
+{
+    counter-increment: flow;
+    position: relative;
+    padding: var(--space-medium);
+    padding-left: calc(var(--space-large) + var(--space-medium));
+    margin-bottom: var(--space-small);
+    border: solid var(--border-width) var(--color-separator);
+    border-radius: var(--radius);
+    background-color: var(--color-canvas);
+    transition: border-color var(--transition-standard);
+}
+
+.flow li:hover
+{
+    border-color: var(--color-accent);
+}
+
+.flow li::before
+{
+    content: counter(flow);
+    position: absolute;
+    left: var(--space-medium);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: var(--color-accent-warm);
+    color: var(--color-light);
+    font-size: var(--text-sm);
+}
+
+/* ------------------------------------------------------------
    Palette figure
    ------------------------------------------------------------ */
 
