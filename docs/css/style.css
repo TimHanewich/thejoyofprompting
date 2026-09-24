@@ -101,15 +101,15 @@ a:hover
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-large) var(--space-medium);
+    padding: var(--space-large) var(--space-large);
 }
 
 .easel-inner
 {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1500px;
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
     gap: var(--space-large);
 }
@@ -118,11 +118,11 @@ a:hover
 {
     display: block;
     width: 100%;
-    max-width: 440px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 88vh;
+    object-fit: cover;
+    object-position: center;
     border-radius: var(--radius);
-    border: 12px solid #5C4326;   /* wood frame */
+    border: 14px solid #5C4326;   /* wood frame */
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
     background-color: var(--color-light);
 }
@@ -436,7 +436,10 @@ footer
 
     .easel-portrait img
     {
-        max-width: 280px;
+        height: 45vh;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
         border-width: 8px;
     }
 
