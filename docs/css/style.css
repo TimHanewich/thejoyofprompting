@@ -97,7 +97,11 @@ a:hover
 {
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(160deg, var(--color-sky) 0%, #2C5A86 45%, var(--color-accent) 100%);
+    background-image: url("https://i.imgur.com/Zyrt3Eg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--color-sky);   /* fallback while the image loads */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,7 +133,7 @@ a:hover
 
 .easel-words
 {
-    color: var(--color-light);
+    color: var(--color-dark);
 }
 
 .kicker
@@ -137,7 +141,7 @@ a:hover
     font-size: var(--text-sm);
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(250, 245, 234, 0.75);
+    color: rgba(46, 33, 24, 0.75);
     margin: 0 0 var(--space-medium) 0;
 }
 
@@ -145,9 +149,9 @@ h1
 {
     font-family: "zilla-slab", Georgia, serif;
     font-size: var(--text-lg);
-    color: var(--color-light);
+    color: var(--color-dark);
     margin: 0;
-    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 2px 10px rgba(255, 253, 247, 0.85);
 }
 
 h1 .title-main
@@ -157,14 +161,14 @@ h1 .title-main
     font-size: var(--text-xxl);
     line-height: 1.15;
     padding-bottom: 0.12em;   /* room for the descenders in the script */
-    color: #FFFDF7;
+    color: var(--color-sky);
 }
 
 .subtitle
 {
     font-size: var(--text-md);
     font-style: italic;
-    color: rgba(250, 245, 234, 0.9);
+    color: var(--color-dark);
     max-width: 34em;
     margin-top: var(--space-medium);
     margin-bottom: 0;
@@ -189,7 +193,7 @@ h1 .title-main
     bottom: var(--space-large);
     left: 50%;
     transform: translateX(-50%);
-    color: rgba(250, 245, 234, 0.7);
+    color: rgba(46, 33, 24, 0.7);
     font-size: var(--text-lg);
 }
 
