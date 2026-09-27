@@ -446,8 +446,7 @@ h3
 {
     flex: 1;
     overflow-y: auto;
-    margin: 0;
-    padding: var(--space-medium);
+    margin: 0;    padding: var(--space-medium);
     white-space: pre-wrap;
     word-wrap: break-word;
     font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
@@ -455,6 +454,32 @@ h3
     line-height: 1.5;
     color: var(--color-dark);
     background-color: var(--color-light);
+}
+
+.viewer-body[hidden]
+{
+    display: none;
+}
+
+.viewer-image
+{
+    flex: 1;
+    overflow: auto;
+    padding: var(--space-medium);
+    background-color: var(--color-light);
+    text-align: center;
+}
+
+.viewer-image[hidden]
+{
+    display: none;
+}
+
+.viewer-image img
+{
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
 }
 
 .viewer-foot

@@ -71,6 +71,17 @@
                     </div>
                 </div>
                 <div class="card">
+                    <h3>For the Bill Review App</h3>
+                    <p>Artwork for the canvas app. Open one to preview it, then copy the image URL.</p>
+                    <div class="bill-actions">
+                        <button class="button small" data-img="https://i.imgur.com/KonNCdy.png" data-img-title="Background Image">Background Image</button>
+                        <button class="button small" data-img="https://i.imgur.com/M9ztq2y.png" data-img-title="Logo Image">Logo Image</button>
+                        <button class="button small" data-img="https://i.imgur.com/6QRk5k6.png" data-img-title="'Bills' Table Image">'Bills' Table Image</button>
+                        <button class="button small" data-img="https://i.imgur.com/OjKOkYg.png" data-img-title="'Bill Updates' Table Image">'Bill Updates' Table Image</button>
+                        <button class="button small" data-img="https://i.imgur.com/LUyBsyh.png" data-img-title="'Bill Commentary' Table Image">'Bill Commentary' Table Image</button>
+                    </div>
+                </div>
+                <div class="card">
                     <h3>Environment Setup</h3>
                     <p>Steps to get your developer environment ready before the first brushstroke.</p>
                     <a class="button" href="#">Coming Soon</a>
@@ -89,6 +100,9 @@
             </div>
             <dl class="viewer-meta" id="viewer-meta" hidden></dl>
             <pre class="viewer-body" id="viewer-body" tabindex="0">Loading&hellip;</pre>
+            <div class="viewer-image" id="viewer-image" hidden>
+                <img id="viewer-image-src" src="" alt="">
+            </div>
             <div class="viewer-foot">
                 <button class="button primary" id="viewer-copy">Copy to Clipboard</button>
             </div>

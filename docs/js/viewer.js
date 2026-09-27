@@ -7,10 +7,13 @@
     var titleEl = document.getElementById("viewer-title");
     var bodyEl = document.getElementById("viewer-body");
     var metaEl = document.getElementById("viewer-meta");
+    var imageWrap = document.getElementById("viewer-image");
+    var imageEl = document.getElementById("viewer-image-src");
     var copyBtn = document.getElementById("viewer-copy");
     var closeBtn = document.getElementById("viewer-close");
     var lastFocused = null;
     var contents = "";
+    var defaultCopyLabel = "Copy to Clipboard";
 
     function open(url, title)
     {
@@ -44,6 +47,18 @@
         contents = text;
         bodyEl.textContent = text;
         bodyEl.scrollTop = 0;
+        copyBtn.disabled = false;
+    }
+
+    function openImage(title, url)
+    {
+        prepare(title, "Copy Image URL");
+        setMeta([{ label: "Image URL", value: url, href: url }]);
+        bodyEl.hidden = true;
+        imageWrap.hidden = false;
+        imageEl.src = url;
+        imageEl.alt = title || "";
+        contents = url;
         copyBtn.disabled = false;
     }
 
@@ -85,13 +100,17 @@
         metaEl.hidden = false;
     }
 
-    function prepare(title)
+    function prepare(title, copyLabel)
     {
         lastFocused = document.activeElement;
         titleEl.textContent = title || "Document";
         contents = "";
+        defaultCopyLabel = copyLabel || "Copy to Clipboard";
         copyBtn.disabled = true;
-        copyBtn.textContent = "Copy to Clipboard";
+        copyBtn.textContent = defaultCopyLabel;
+        imageWrap.hidden = true;
+        imageEl.removeAttribute("src");
+        bodyEl.hidden = false;
         viewer.hidden = false;
         document.body.classList.add("no-scroll");
         bodyEl.focus();
@@ -106,7 +125,7 @@
     function flash(message)
     {
         copyBtn.textContent = message;
-        setTimeout(function () { copyBtn.textContent = "Copy to Clipboard"; }, 2000);
+        setTimeout(function () { copyBtn.textContent = defaultCopyLabel; }, 2000);
     }
 
     function legacyCopy()
@@ -150,6 +169,14 @@
         });
     });
 
+    document.querySelectorAll("[data-img]").forEach(function (btn)
+    {
+        btn.addEventListener("click", function ()
+        {
+            openImage(btn.getAttribute("data-img-title"), btn.getAttribute("data-img"));
+        });
+    });
+
     copyBtn.addEventListener("click", copy);
     closeBtn.addEventListener("click", close);
 
@@ -163,5 +190,5 @@
         if (e.key === "Escape" && !viewer.hidden) { close(); }
     });
 
-    window.DocViewer = { open: open, openText: openText };
+    window.DocViewer = { open: open, openText: openText, openImage: openImage };
 }());
