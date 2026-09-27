@@ -289,8 +289,11 @@ h3
     text-decoration: none;
     border-radius: var(--radius);
     border: solid var(--border-width) var(--color-dark);
+    background-color: transparent;
     color: var(--color-dark);
+    font-family: "zilla-slab", Georgia, serif;
     font-size: var(--text-sm);
+    cursor: pointer;
     transition: background-color var(--transition-standard), color var(--transition-standard), border-color var(--transition-standard);
 }
 
@@ -312,6 +315,109 @@ h3
 {
     background-color: var(--color-accent-warm);
     border-color: var(--color-accent-warm);
+}
+
+/* ------------------------------------------------------------
+   Document viewer (pop-out)
+   ------------------------------------------------------------ */
+
+.no-scroll
+{
+    overflow: hidden;
+}
+
+.viewer
+{
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-large) var(--space-medium);
+    background-color: rgba(46, 33, 24, 0.55);
+}
+
+.viewer[hidden]
+{
+    display: none;
+}
+
+.viewer-pane
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 820px;
+    max-height: 85vh;
+    background-color: var(--color-canvas);
+    border: 10px solid #5C4326;   /* same wood frame as the hero */
+    border-radius: var(--radius);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.viewer-head
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-medium);
+    padding: var(--space-medium);
+    border-bottom: solid var(--border-width) var(--color-separator);
+}
+
+.viewer-head h3
+{
+    margin: 0;
+    color: var(--color-sky);
+    font-size: var(--text-md);
+}
+
+.viewer-close
+{
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: "zilla-slab", Georgia, serif;
+    font-size: var(--text-lg);
+    line-height: 1;
+    color: var(--color-muted);
+    padding: 0 var(--space-small);
+    transition: color var(--transition-standard);
+}
+
+.viewer-close:hover
+{
+    color: var(--color-crimson);
+}
+
+.viewer-body
+{
+    flex: 1;
+    overflow-y: auto;
+    margin: 0;
+    padding: var(--space-medium);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+
+.viewer-foot
+{
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--space-medium);
+    border-top: solid var(--border-width) var(--color-separator);
+}
+
+.viewer-foot .button[disabled]
+{
+    opacity: 0.5;
+    cursor: default;
 }
 
 /* ------------------------------------------------------------

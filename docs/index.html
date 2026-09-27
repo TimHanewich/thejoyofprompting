@@ -61,7 +61,7 @@
                 <div class="card">
                     <h3>The Full Prompt</h3>
                     <p>The complete prompt we feed to Plan Designer to rough in our whole solution.</p>
-                    <a class="button primary" href="./assets/prompt.md">Get the Prompt</a>
+                    <button class="button primary" data-doc="./assets/prompt.md" data-doc-title="The Full Prompt">View the Prompt</button>
                 </div>
                 <div class="card">
                     <h3>3 Sample Bills</h3>
@@ -78,10 +78,26 @@
 
     </div>
 
+    <!-- ========== DOCUMENT VIEWER ========== -->
+    <div class="viewer" id="viewer" hidden>
+        <div class="viewer-pane" role="dialog" aria-modal="true" aria-labelledby="viewer-title">
+            <div class="viewer-head">
+                <h3 id="viewer-title">Document</h3>
+                <button class="viewer-close" id="viewer-close" aria-label="Close">&times;</button>
+            </div>
+            <pre class="viewer-body" id="viewer-body" tabindex="0">Loading&hellip;</pre>
+            <div class="viewer-foot">
+                <button class="button primary" id="viewer-copy">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ========== FOOTER ========== -->
     <footer>
         <p>Created by <a href="https://timh.ai">Tim Hanewich</a></p>
     </footer>
+
+    <script src="./js/viewer.js"></script>
 
 </body>
 </html>
