@@ -288,9 +288,9 @@ h3
     padding: var(--space-small) var(--space-medium);
     text-decoration: none;
     border-radius: var(--radius);
-    border: solid var(--border-width) var(--color-dark);
-    background-color: transparent;
-    color: var(--color-dark);
+    border: solid var(--border-width) var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-light);
     font-family: "zilla-slab", Georgia, serif;
     font-size: var(--text-sm);
     cursor: pointer;
@@ -305,9 +305,9 @@ h3
 
 .button:hover
 {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-warm);
     color: var(--color-light);
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-warm);
 }
 
 .button.primary
