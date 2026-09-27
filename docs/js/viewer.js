@@ -6,6 +6,7 @@
     var pane = viewer.querySelector(".viewer-pane");
     var titleEl = document.getElementById("viewer-title");
     var bodyEl = document.getElementById("viewer-body");
+    var metaEl = document.getElementById("viewer-meta");
     var copyBtn = document.getElementById("viewer-copy");
     var closeBtn = document.getElementById("viewer-close");
     var lastFocused = null;
@@ -13,15 +14,9 @@
 
     function open(url, title)
     {
-        lastFocused = document.activeElement;
-        titleEl.textContent = title || "Document";
+        prepare(title);
+        setMeta(null);
         bodyEl.textContent = "Loading\u2026";
-        contents = "";
-        copyBtn.disabled = true;
-        copyBtn.textContent = "Copy to Clipboard";
-        viewer.hidden = false;
-        document.body.classList.add("no-scroll");
-        bodyEl.focus();
 
         fetch(url, { cache: "no-store" })
             .then(function (res)
@@ -42,13 +37,72 @@
             });
     }
 
+    function openText(title, text, fields)
+    {
+        prepare(title);
+        setMeta(fields);
+        contents = text;
+        bodyEl.textContent = text;
+        bodyEl.scrollTop = 0;
+        copyBtn.disabled = false;
+    }
+
+    function setMeta(fields)
+    {
+        metaEl.innerHTML = "";
+
+        if (!fields || !fields.length)
+        {
+            metaEl.hidden = true;
+            return;
+        }
+
+        fields.forEach(function (field)
+        {
+            var dt = document.createElement("dt");
+            dt.textContent = field.label;
+            metaEl.appendChild(dt);
+
+            var dd = document.createElement("dd");
+
+            if (field.href)
+            {
+                var link = document.createElement("a");
+                link.href = field.href;
+                link.target = "_blank";
+                link.rel = "noopener";
+                link.textContent = field.value;
+                dd.appendChild(link);
+            }
+            else
+            {
+                dd.textContent = field.value;
+            }
+
+            metaEl.appendChild(dd);
+        });
+
+        metaEl.hidden = false;
+    }
+
+    function prepare(title)
+    {
+        lastFocused = document.activeElement;
+        titleEl.textContent = title || "Document";
+        contents = "";
+        copyBtn.disabled = true;
+        copyBtn.textContent = "Copy to Clipboard";
+        viewer.hidden = false;
+        document.body.classList.add("no-scroll");
+        bodyEl.focus();
+    }
+
     function close()
     {
         viewer.hidden = true;
         document.body.classList.remove("no-scroll");
         if (lastFocused) { lastFocused.focus(); }
     }
-
     function flash(message)
     {
         copyBtn.textContent = message;
@@ -108,4 +162,6 @@
     {
         if (e.key === "Escape" && !viewer.hidden) { close(); }
     });
+
+    window.DocViewer = { open: open, openText: openText };
 }());

@@ -64,9 +64,11 @@
                     <button class="button primary" data-doc="./assets/prompt.md" data-doc-title="The Full Prompt">View the Prompt</button>
                 </div>
                 <div class="card">
-                    <h3>3 Sample Bills</h3>
-                    <p>Sample legislation to drop into our app and let the AI summarize.</p>
-                    <a class="button" href="#">Coming Soon</a>
+                    <h3>Sample Bills</h3>
+                    <p>Three real bills from the 2025 Texas session to drop into the app and let the AI summarize.</p>
+                    <div class="bill-actions" id="bill-buttons">
+                        <span class="bill-status">Loading&hellip;</span>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Environment Setup</h3>
@@ -85,6 +87,7 @@
                 <h3 id="viewer-title">Document</h3>
                 <button class="viewer-close" id="viewer-close" aria-label="Close">&times;</button>
             </div>
+            <dl class="viewer-meta" id="viewer-meta" hidden></dl>
             <pre class="viewer-body" id="viewer-body" tabindex="0">Loading&hellip;</pre>
             <div class="viewer-foot">
                 <button class="button primary" id="viewer-copy">Copy to Clipboard</button>
@@ -98,6 +101,7 @@
     </footer>
 
     <script src="./js/viewer.js"></script>
+    <script src="./js/bills.js"></script>
 
 </body>
 </html>

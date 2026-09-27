@@ -297,6 +297,12 @@ h3
     transition: background-color var(--transition-standard), color var(--transition-standard), border-color var(--transition-standard);
 }
 
+.button.small
+{
+    padding: 6px var(--space-small);
+    font-size: var(--text-sm);
+}
+
 .button:hover
 {
     background-color: var(--color-accent);
@@ -315,6 +321,24 @@ h3
 {
     background-color: var(--color-accent-warm);
     border-color: var(--color-accent-warm);
+}
+
+/* ------------------------------------------------------------
+   Sample bills
+   ------------------------------------------------------------ */
+
+.bill-actions
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-small);
+}
+
+.bill-status
+{
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+    font-style: italic;
 }
 
 /* ------------------------------------------------------------
@@ -389,6 +413,33 @@ h3
 .viewer-close:hover
 {
     color: var(--color-crimson);
+}
+
+.viewer-meta
+{
+    margin: 0;
+    padding: var(--space-medium);
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: var(--space-small) var(--space-medium);
+    font-size: var(--text-sm);
+    border-bottom: solid var(--border-width) var(--color-separator);
+}
+
+.viewer-meta[hidden]
+{
+    display: none;
+}
+
+.viewer-meta dt
+{
+    color: var(--color-muted);
+}
+
+.viewer-meta dd
+{
+    margin: 0;
+    word-break: break-word;
 }
 
 .viewer-body
